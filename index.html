@@ -3,27 +3,36 @@
 
 <head>
   <title>Here's Todo list</title>
+  <link rel="stylesheet" href="css/style.css" />
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
-  <h1>Time Until Christmas Eve</h1>
+  <div>Now : <span class="js-clock"></span></div>
+  <h1>Here's Todo list</h1>
 
   <form id="login-form">
-    <input type="text" placeholder="please login" />
+    <input id="login-id" type="text" placeholder="please login" />
   </form>
-  <h2 id="hello"></h2>
-
-
-  <h2 class="js-clock"></h2>
+  <div id="loginControl" class="isLogined"><span id="hello"></span> <button type="button">logout</button> </div>
 
   <form id="todo-form">
     <input type="text" placeholder="Write a To Do and Press Enter" required />
   </form>
   <ul id="todo-list"></ul>
 
+  <div id="weather">
+    City : <span></span> <br/>
+    Weather : <span></span>
+  </div>
+
+
+  <script src="src/login.js"></script>
   <script src="src/clock.js"></script>
   <script src="src/todo.js"></script>
+  <script src="src/image.js"></script>
+  <script src="src/weather.js"></script>
 </body>
 
 </html>

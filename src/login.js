@@ -1,38 +1,46 @@
-const loginForm = document.getElementById("todo-form");
-//const toDoInput = document.querySelector("#todo-form input");
-const loginInput = loginForm.querySelector("input");
-const sayHello = document.getElementById("hello");
+const loginForm = document.getElementById("login-form");
+const loginId = loginForm.querySelector("#login-id");
+const loginControl = document.getElementById("loginControl");
+const sayHello = loginControl.querySelector("span");
+const logoutBtn = loginControl.querySelector("button");
 
-const HIDDEN_CLASS = "hidden";
+const ISLOGIN_CLASS = "isLogined";
+const LOGINID_STR = "loginId";
 
 function handleLogin(event) {
     event.preventDefault();
-    loginForm.classList.add()
-    const newTodo = toDoInput.value;
-    paintTodo(newTodo);
-    toDoInput.value = "";
+    doLogin(loginId.value);
 }
 
-function paintTodo(newTodo) {
-    const li = document.createElement("li");
-    const span = document.createElement("span");
-    span.innerText = newTodo;
-    const button = document.createElement("button");
-    button.innerText = "✖";
-    button.addEventListener("click", deleteToDo);
-
-    li.appendChild(span);
-    li.appendChild(button);
-    
-    console.log(li);
-    toDoList.appendChild(li);
-
+function doLogin(id) {
+    loginForm.classList.add(ISLOGIN_CLASS);
+    sayHelloMessage(id);
+    localStorage.setItem(LOGINID_STR, id);
 }
 
-function deleteToDo(event) {
+function handleLogout(event) {
     event.preventDefault();
-    const deleteLi = event.target.parentElement;
-    deleteLi.remove();
+    loginId.value = "";
+    loginForm.classList.remove(ISLOGIN_CLASS);
+    loginControl.classList.add(ISLOGIN_CLASS);
+    localStorage.removeItem(LOGINID_STR);
 }
+
+function sayHelloMessage(id) {
+    sayHello.innerText = `Hi ${id}`;
+    loginControl.classList.remove(ISLOGIN_CLASS);
+}
+
+function checkLogin() {
+    const id = localStorage.getItem(LOGINID_STR);
+    if (id) {
+        doLogin(id);
+        return id;
+    }
+    return false;
+}
+
+checkLogin();
 
 loginForm.addEventListener("submit", handleLogin);
+logoutBtn.addEventListener("click", handleLogout);
