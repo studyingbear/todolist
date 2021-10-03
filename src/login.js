@@ -1,12 +1,13 @@
-const toDoForm = document.getElementById("todo-form");
+const loginForm = document.getElementById("todo-form");
 //const toDoInput = document.querySelector("#todo-form input");
-const toDoInput = toDoForm.querySelector("input");
-const toDoList = document.getElementById("todo-list");
+const loginInput = loginForm.querySelector("input");
+const sayHello = document.getElementById("hello");
 
+const HIDDEN_CLASS = "hidden";
 
-
-function handleToDoSubmit(event) {
+function handleLogin(event) {
     event.preventDefault();
+    loginForm.classList.add()
     const newTodo = toDoInput.value;
     paintTodo(newTodo);
     toDoInput.value = "";
@@ -34,4 +35,4 @@ function deleteToDo(event) {
     deleteLi.remove();
 }
 
-toDoForm.addEventListener("submit", handleToDoSubmit);
+loginForm.addEventListener("submit", handleLogin);
